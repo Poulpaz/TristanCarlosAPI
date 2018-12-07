@@ -39,7 +39,6 @@ exports.userWithToken = function(req, res, next) {
 }
 
 exports.addNewUser = function(req, res, next) {
-    var response = [];
     var name = req.body.name;
     var surname = req.body.surname;
     var age = req.body.age;
@@ -50,4 +49,15 @@ exports.addNewUser = function(req, res, next) {
             console.log("User has inserted into table ! :)");
         }
     });
+}
+
+exports.deleteUser = function(req, res, next) {
+    var idUser = req.body.iduser;
+    connection.query("DELETE FROM user WHERE iduser=" + idUser + "", function(err, result, fields) {
+            if(err) {
+                throw err;
+            } else {
+                console.log("User has deleted from table user ! :)");
+            }
+        });
 }

@@ -24,4 +24,7 @@ module.exports = function(app) {
 
     //Add a new user with name, surname and age
     app.route('/user').post(userController.addNewUser);
+
+    //Delete a user with token
+    app.route('/user').delete(userController.deleteUser);
 };
