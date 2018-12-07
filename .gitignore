@@ -1,0 +1,207 @@
+# Created by https://www.gitignore.io/api/git,node,java,code,intellij,intellij+iml
+# Edit at https://www.gitignore.io/\?templates\=git,node,java,code,intellij,intellij+iml
+
+### Code ###
+# Visual Studio Code - https://code.visualstudio.com/
+.settings/
+.vscode/
+tsconfig.json
+jsconfig.json
+
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
+
+### Intellij ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Generated files
+.idea/**/contentModel.xml
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSource# Edit at https://www.gitignore.io/\?templates\=git,node,java,code,intellij,intellc.x
+### Code ###
+# Visual Studio Code - https://code.visualstudio.com/
+.settings/
+.vscodea/# Visualries
+.settings/
+.vscode/
+tsconfig.json
+jsconfig.json
+
+###ad.vscode/ventsconfiutjsconfig.jsou 
+### Git ##ude # Created es# $ git config --global mergetool.keepBackup false
+*.or U*.orig
+
+# Created by git when using merge tools fxm
+# Cride*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.on*.BASE.*
+er*.LOCAL
+.*.REMOTEmo*_BACKUP_gs*_BASE_*.txt
+ba*_LOCAL_*.t f*_REMOTE_*.t
+#
+### Intellij/
+
+# Covers JetBra-i# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.ide.
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usagpor.idea/**/workspace.xyt.idea/**/tasks.xml
+.iyt.idea/**/usage.stie.idea/**/dictionaries
+.idea/r-.idea/**/shelf
+
+# Gede
+# Generated s
+
+.idea/**/content 3
+# Sensitive or high-chue
+..idea/**/dataSources/
+.idea/**ms.idea/**/dataSource#at### Code ###
+# Visual Studio Code - https://code.visualstudio.com/
+.settings/
+.vscodea/# Visualries
+. *# Visual Stle.settings/
+.vscodea/# Visualries
+.settings/
+.vscode/id.vscodea/in.settings/
+.vscode/
+##.vscode/
+s tsconfinsjsconfig.jsoli
+###ad.vscod Ph### Git ##ude # Created es# $ git confid*.or U*.orig
+
+# Created by git when using merge tools fxm
+# Cride*.BACKUP.*/e
+# Created es/# Cride*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMte*.BASE.*
+*.LOCALti*.LOCALig*.REMOTEfi*_BACKUP_ader*.LOCAL
+.*.REMOTEmen.*.REMOTtoba*_LOCAL_*.t f*_REMOTE_*.t
+#
+###ve#
+### Intellij/
+
+# Covers ould
+# Covers Jeule
+# User-specific stuff
+.ide.
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.i
+# .ide.
+# User-specifi.i# Us*..idea/**/workspace.x
+#.idea/**/tasks.xml
+.ire.idea/**/usagpor.ba.iyt.idea/**/usage.stie.idea/**/dictionaries
+.idea/r-.iug.idea/r-.idea/**/shelf
+
+# Gede
+# Generated 
+
+
+# Gede
+# Generated s(fo# Genro
+.idea/**/cod I# Sensitive or hir-..idea/**/dataSources/
+dr.idea/**ms.idea/**/dali# Visual Studio Code - https://code.visuals\# .settings/
+.vscodea/# Visualries
+. *# Visual Stle.sees.vscodea/ec. *# Visual Stle.setim.vscodea/# Visualries
+.sexm.settings/
+.vscode/i#
+.vscode/id .vscode/
+##.vscode/
+s tsconfie
+*##.vsco Bs tsconfis
+###ad.vscod Ph### Git ##or
+# Created by git when using merge tools fxm
+# Cride*.BACKUP.*/e
+
+*.# Cride*.BACKUP.*/e
+# Created es/# Cride*.h # Created es/# Criww*.BASE.*
+*.LOCAL.*
+*.REMte*.Bro*.LOCALot*.REMte*er*.LOCALti*.LOCde.*.REMOTEmen.*.REMOTtoba*_LOCAL_*.t f*_REMOTE_*
+y#
+###ve#
+### Intellij/
+
+# Covers ould
+# Covers J
+*.p### Ick
+# Covers ouy f# Covers Jeute# User-specifte.ide.
+# User-specifive# Usb-.idea/**/workspace.xct.idea/**/tasks.xml
+.ie .i
+# .ide.
+# User
+
+# n# Usert #.idea/**/tasks.xml
+.ire.idea/**/usagporte .ire.idea/**/usaggru.idea/r-.iug.idea/r-.idea/**/shelf
+
+# Gede
+# Generated 
+
+
+# Gede
+#nd
+# Gede
+# Generated 
+
+
+# Gede
+# G)
+b# Genco
+
+# Gede
+#  nod# Gen c.idea/**/cod I# Sensitridr.idea/**ms.idea/**/dali# Visual Studio Code - https:dd.vscodea/\# Visualries
+. *# Visual Stle.sees.vscodea/ec. *# Visual Stle.setim.vs
+#. *# Visual Stle.seera.sexm.settings/
+.vscode/i#
+.vscode/id .vscode/
+##.vscode/
+s tsconfie
+*##.vt .vscode/i#
+.vsac.vscode/iio##.vscode/
+s tsconnos tsconfiis*##.vsco ut###ad.vscod Ph### G.t# Created by git when usi
+.# Cride*.BACKUP.*/e
+
+*.# Cride*.BACKUP.*/ebl
+*.# Cride*.BACKUPrce# Created es/# Crideps*.LOCAL.*
+*.REMte*.Bro*.LOCALot*.REMte*er*.LOCALti*ex*.REMte*t.y#
+###ve#
+### Intellij/
+
+# Covers ould
+# Covers J
+*.p### Ick
+# Covers ouy f# Covers Jeute# User#es### I F
+# Covers ou
+.f# Covers J
+*na*.p### Icl # Covers na# User-specifive# Usb-.idea/**/workspace.xct.idt,.ie .i
+# .ide.
+# User
+
+# n# Usert #.
