@@ -1,0 +1,23 @@
+{
+  "name": "tristancarlosapi",
+  "version": "1.0.0",
+  "description": "Serveur HTTP pour API Rest",
+  "main": "server.js",
+  "scripts": {
+    "test": " "
+  },
+  "keywords": [
+    "server",
+    "http",
+    "api",
+    "rest"
+  ],
+  "author": "Tristan REFFAY , Carlos CHASTAGNIER",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.14",
+    "mysql": "^2.16.0"
+  }
+}
