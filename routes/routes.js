@@ -5,7 +5,7 @@ module.exports = function(app) {
     /* Routes cards */
 
     //Get every cards
-
+    app.route('/shop').get(cardController.listCard)
 
     //Get only one card per id
 
