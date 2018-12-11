@@ -61,7 +61,7 @@ exports.deleteCard = function (req, res, next) {
 }
 
 exports.updateCard = function (req, res, next) {
-    var idCard = req.body.card;
+    var idCard = req.headers.card;
     var libelle = req.body.libelle;
     connection.query("UPDATE card SET libelle='" + libelle + "' WHERE idcard=" + idCard + "", function (err, result, fields) {
         if (err) {

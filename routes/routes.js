@@ -3,7 +3,6 @@ module.exports = function (app) {
     var userController = require('../controllers/userController');
     var userCardController = require('../controllers/userCardController');
 
-
     /* Routes cards */
 
     //Get every cards

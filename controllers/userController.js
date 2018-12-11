@@ -15,7 +15,7 @@ exports.listUser = function (req, res, next) {
         } else {
             Object.keys(result).forEach(function (key) {
                 var row = result[key];
-                console.log(row.name);
+                console.log(row.surname);
             });
             res.json(result);
         }
@@ -25,13 +25,13 @@ exports.listUser = function (req, res, next) {
 exports.userWithToken = function (req, res, next) {
     var response = [];
     var token = req.params.token;
-    connection.query("SELECT * FROM user WHERE iduser=" + token + "", function (err, result, fields) {
+    connection.query("SELECT * FROM user WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
             Object.keys(result).forEach(function (key) {
                 var row = result[key];
-                console.log(row.name);
+                console.log(row.surname);
             });
             res.json(result);
         }
@@ -39,10 +39,13 @@ exports.userWithToken = function (req, res, next) {
 }
 
 exports.addNewUser = function (req, res, next) {
-    var name = req.body.name;
+    var token = req.headers.token
     var surname = req.body.surname;
+    var name = req.body.name;
     var age = req.body.age;
-    connection.query("INSERT INTO user (name, surname, age) VALUES ('" + name + "', '" + surname + "', '" + age + "')", function (err, result, fields) {
+    var wallet = req.body.wallet;
+    var imageUrl = req.body.url;
+    connection.query("INSERT INTO user (token, surname, name, age, wallet, imageurlprofile) VALUES ('" + token + "', '" + surname + "', '" + name + "', '" + age + "', '" + wallet + "', '" + imageUrl + "')", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -52,8 +55,8 @@ exports.addNewUser = function (req, res, next) {
 }
 
 exports.deleteUser = function (req, res, next) {
-    var idUser = req.body.iduser;
-    connection.query("DELETE FROM user WHERE iduser=" + idUser + "", function (err, result, fields) {
+    var token = req.body.user;
+    connection.query("DELETE FROM user WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -64,12 +67,13 @@ exports.deleteUser = function (req, res, next) {
 
 exports.updateUser = function (req, res, next) {
     var token = req.headers.token;
-    console.log(token);
-    var name = req.body.name;
     var surname = req.body.surname;
+    var name = req.body.name;
     var age = req.body.age;
+    var wallet = req.body.wallet;
+    var imageUrl = req.body.url;
 
-    connection.query("UPDATE user SET name='" + name + "', surname='" + surname + "', age='" + age + "' WHERE iduser=" + token + "", function (err, result, fields) {
+    connection.query("UPDATE user SET surname='" + surname + "', name='" + name + "', age='" + age + "', wallet='" + wallet + "', imageurlprofile='" + imageUrl + "' WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
