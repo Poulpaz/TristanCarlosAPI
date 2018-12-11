@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function (app) {
     var cardController = require('../controllers/cardController');
     var userController = require('../controllers/userController');
     var userCardController = require('../controllers/userCardController');
