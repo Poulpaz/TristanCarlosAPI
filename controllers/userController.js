@@ -61,3 +61,19 @@ exports.deleteUser = function(req, res, next) {
             }
         });
 }
+
+exports.updateUser = function(req, res, next) {
+    var token = req.body.token
+    console.log(token);
+    var name = req.body.name;
+    var surname = req.body.surname;
+    var age = req.body.age;
+
+    connection.query("UPDATE user SET name='" + name + "', surname='" + surname + "', age='" + age + "' WHERE iduser=" + token + "", function(err, result, fields) {
+        if(err) {
+            throw err;
+        } else {
+            console.log("User has updated into table ! :)");
+        }
+    });
+}
