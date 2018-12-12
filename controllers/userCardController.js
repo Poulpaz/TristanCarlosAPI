@@ -97,7 +97,8 @@ exports.getAllUserCardWithToken = function (req, res, next) {
                         });
                         result.on('end', function () {
                             var card = JSON.parse(data);
-                            res.json(card);
+                            console.log(card);
+                            //res.json(card);
                         });
                     });
                     request.on('error', (e) => {
