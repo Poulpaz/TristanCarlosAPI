@@ -1,9 +1,9 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
     // properties
-    host: 'localhost',
-    user: 'root',
-    password: '',
+    host: 'db4free.net',
+    user: 'tristancarlos',
+    password: 'Jo33b42y&',
     database: 'tristancarlosapi'
 });
 
@@ -63,7 +63,7 @@ exports.deleteUserCard = function (req, res, next) {
 }
 
 exports.updateUserCard = function (req, res, next) {
-    var idUserCard = req.headers.uc;
+    var idUserCard = req.body.uc;
     var user_idUser = req.body.user;
     var card_idCard = req.body.card;
     connection.query("UPDATE usercard SET user_iduser='" + user_idUser + "', card_idcard='" + card_idCard + "' WHERE idusercard=" + idUserCard + "", function (err, result, fields) {
@@ -77,8 +77,8 @@ exports.updateUserCard = function (req, res, next) {
 
 exports.getAllUserCardWithToken = function (req, res, next) {
     var response = [];
-    var token = req.params.token;
-    connection.query("SELECT * FROM usercard, card, user WHERE usercard.user_iduser=user.iduser AND usercard.card_idcard=card.idcard AND user.token=" + token
+    var token = req.headers.token;
+    connection.query("SELECT idcard, libelle FROM usercard, card, user WHERE usercard.user_iduser=user.iduser AND usercard.card_idcard=card.idcard AND user.token=" + token
         + "", function (err, result, fields) {
             if (err) {
                 throw err;

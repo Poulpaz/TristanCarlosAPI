@@ -1,9 +1,9 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
     // properties
-    host: 'localhost',
-    user: 'root',
-    password: '',
+    host: 'db4free.net',
+    user: 'tristancarlos',
+    password: 'Jo33b42y&',
     database: 'tristancarlosapi'
 });
 

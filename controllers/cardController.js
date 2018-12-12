@@ -1,25 +1,30 @@
 var mysql = require('mysql');
+var https = require('https');
 var connection = mysql.createConnection({
     // properties
-    host: 'localhost',
-    user: 'root',
-    password: '',
+    host: 'db4free.net',
+    user: 'tristancarlos',
+    password: 'Jo33b42y&',
     database: 'tristancarlosapi'
 });
 
 exports.listCard = function (req, res, next) {
-    var response = [];
-    connection.query("SELECT * FROM card", function (err, result, fields) {
-        if (err) {
-            throw err;
-        } else {
-            Object.keys(result).forEach(function (key) {
-                var row = result[key];
-                console.log(row.libelle);
-            });
-            res.json(result);
-        }
+    var option = "https://api.elderscrollslegends.io/v1/cards";
+    var data = "";
+
+    var request = https.get(option, (result) => {
+        result.on('data', (d) => {
+            data += d;
+        });
+        result.on('end', function () {
+            var cards = JSON.parse(data);
+            res.json(cards);
+        });
     });
+    request.on('error', (e) => {
+        console.error(e);
+    });
+    request.end();
 }
 
 exports.cardWithId = function (req, res, next) {
@@ -50,7 +55,7 @@ exports.addNewCard = function (req, res, next) {
 }
 
 exports.deleteCard = function (req, res, next) {
-    var idCard = req.body.idcard;
+    var idCard = req.params.idcard;
     connection.query("DELETE FROM card WHERE idcard=" + idCard + "", function (err, result, fields) {
         if (err) {
             throw err;
