@@ -96,8 +96,9 @@ exports.getAllUserCardWithToken = function (req, res, next) {
                             data += d;
                         });
                         result.on('end', function () {
-                            var card = JSON.parse(data);
-                            console.log(JSON.parse(data));
+                            //var card = JSON.parse(data);
+                            cards.push(JSON.parse(data))
+                            //console.log(JSON.parse(data));
 
                             //res.json(card);
                         });
@@ -105,6 +106,7 @@ exports.getAllUserCardWithToken = function (req, res, next) {
                     request.on('error', (e) => {
                         console.error(e);
                     });
+                    console.log(cards);
                     request.end();
                 });
                 res.json(result);
