@@ -28,19 +28,24 @@ exports.listCard = function (req, res, next) {
 }
 
 exports.cardWithId = function (req, res, next) {
-    var response = [];
     var idcard = req.params.id;
-    connection.query("SELECT * FROM card WHERE idcard=" + idcard + "", function (err, result, fields) {
-        if (err) {
-            throw err;
-        } else {
-            Object.keys(result).forEach(function (key) {
-                var row = result[key];
-                console.log(row.libelle);
-            });
-            res.json(result);
-        }
+
+    var option = "https://api.elderscrollslegends.io/v1/cards/" + idcard;
+    var data = "";
+
+    var request = https.get(option, (result) => {
+        result.on('data', (d) => {
+            data += d;
+        });
+        result.on('end', function () {
+            var card = JSON.parse(data);
+            res.json(card);
+        });
     });
+    request.on('error', (e) => {
+        console.error(e);
+    });
+    request.end();
 }
 
 exports.addNewCard = function (req, res, next) {

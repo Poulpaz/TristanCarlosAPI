@@ -49,7 +49,7 @@ module.exports = function (app) {
 
     app.route('/').get(function (req, res, next) {
         console.log("Hello")        
-        res.send("Hello")
+        res.send("Hello Heroku. API is working... You can begin to use it !")
     })
 
     //Get every users
