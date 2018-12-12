@@ -8,4 +8,5 @@ app.use(bodyParser.json());
 var route = require('./routes/routes');
 
 route(app);
+console.log("Server listen on port 1337")
 app.listen(1337);

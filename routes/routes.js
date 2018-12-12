@@ -1,4 +1,7 @@
 module.exports = function (app) {
+
+    console.log("route")
+
     var cardController = require('../controllers/cardController');
     var userController = require('../controllers/userController');
     var userCardController = require('../controllers/userCardController');
@@ -45,6 +48,7 @@ module.exports = function (app) {
     /* Routes users */
 
     app.route('/').get(function (req, res, next) {
+        console.log("Hello")        
         res.send("Hello")
     })
 
