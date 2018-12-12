@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+var https = require('https');
 var connectionOnline = mysql.createConnection({
     // properties
     host: 'db4free.net',
@@ -76,6 +77,7 @@ exports.updateUserCard = function (req, res, next) {
 }
 
 exports.getAllUserCardWithToken = function (req, res, next) {
+    var response = [];
     var token = req.params.token;
     connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token
         + "", function (err, result, fields) {
@@ -85,6 +87,23 @@ exports.getAllUserCardWithToken = function (req, res, next) {
                 Object.keys(result).forEach(function (key) {
                     var row = result[key];
                     console.log(row.card_idcard);
+
+                    var option = "https://api.elderscrollslegends.io/v1/cards/" + row.card_idcard;
+                    var data = "";
+                
+                    var request = https.get(option, (result) => {
+                        result.on('data', (d) => {
+                            data += d;
+                        });
+                        result.on('end', function () {
+                            var card = JSON.parse(data);
+                            res.json(card);
+                        });
+                    });
+                    request.on('error', (e) => {
+                        console.error(e);
+                    });
+                    request.end();
                 });
                 res.json(result);
             }
