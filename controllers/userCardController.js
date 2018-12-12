@@ -77,7 +77,7 @@ exports.updateUserCard = function (req, res, next) {
 }
 
 exports.getAllUserCardWithToken = function (req, res, next) {
-    var response = [];
+    var cards = [];
     var token = req.params.token;
     connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token
         + "", function (err, result, fields) {
@@ -97,7 +97,8 @@ exports.getAllUserCardWithToken = function (req, res, next) {
                         });
                         result.on('end', function () {
                             var card = JSON.parse(data);
-                            console.log(card);
+                            console.log(JSON.parse(data));
+
                             //res.json(card);
                         });
                     });
