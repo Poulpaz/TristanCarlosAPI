@@ -6,14 +6,23 @@ module.exports = function (app) {
     var userController = require('../controllers/userController');
     var userCardController = require('../controllers/userCardController');
 
+    /* Routes test - debug */
+
+    app.route('/test').get(function (req, res, next) {
+        console.log("Hello")        
+        res.send("Hello Heroku. API is working... You can begin to use it !")
+    })
+
     /* Routes cards */
 
-    //Get every cards
+    //Get every cards + Heroku - home/shop
     app.route('/api/cards').get(cardController.listCard);
 
-    //Get only one card per id
+    //Get only one card per id + Heroku - home/shop
     app.route('/api/card/:id').get(cardController.cardWithId);
 
+
+    /*
     //Add a new card that's will be available in shop
     app.route('/api/card').post(cardController.addNewCard);
 
@@ -22,6 +31,7 @@ module.exports = function (app) {
 
     //Update a card in card table (idCard)
     app.route('/api/card').put(cardController.updateCard);
+    */
 
 
     /* Routes userCards */
@@ -46,11 +56,6 @@ module.exports = function (app) {
 
 
     /* Routes users */
-
-    app.route('/').get(function (req, res, next) {
-        console.log("Hello")        
-        res.send("Hello Heroku. API is working... You can begin to use it !")
-    })
 
     //Get every users
     app.route('/api/users').get(userController.listUser);

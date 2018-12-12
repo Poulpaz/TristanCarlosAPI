@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var https = require('https');
-var connection = mysql.createConnection({
+var connectionOnline = mysql.createConnection({
     // properties
     host: 'db4free.net',
     user: 'tristancarlos',
@@ -50,7 +50,7 @@ exports.cardWithId = function (req, res, next) {
 
 exports.addNewCard = function (req, res, next) {
     var libelle = req.body.libelle;
-    connection.query("INSERT INTO card (libelle) VALUES ('" + libelle + "')", function (err, result, fields) {
+    connectionOnline.query("INSERT INTO card (libelle) VALUES ('" + libelle + "')", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -61,7 +61,7 @@ exports.addNewCard = function (req, res, next) {
 
 exports.deleteCard = function (req, res, next) {
     var idCard = req.params.idcard;
-    connection.query("DELETE FROM card WHERE idcard=" + idCard + "", function (err, result, fields) {
+    connectionOnline.query("DELETE FROM card WHERE idcard=" + idCard + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -73,7 +73,7 @@ exports.deleteCard = function (req, res, next) {
 exports.updateCard = function (req, res, next) {
     var idCard = req.headers.card;
     var libelle = req.body.libelle;
-    connection.query("UPDATE card SET libelle='" + libelle + "' WHERE idcard=" + idCard + "", function (err, result, fields) {
+    connectionOnline.query("UPDATE card SET libelle='" + libelle + "' WHERE idcard=" + idCard + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {

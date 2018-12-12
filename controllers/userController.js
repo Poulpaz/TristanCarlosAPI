@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var connection = mysql.createConnection({
+var connectionOnline = mysql.createConnection({
     // properties
     host: 'db4free.net',
     user: 'tristancarlos',
@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
 
 exports.listUser = function (req, res, next) {
     var response = [];
-    connection.query("SELECT * FROM user", function (err, result, fields) {
+    connectionOnline.query("SELECT * FROM user", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -25,7 +25,7 @@ exports.listUser = function (req, res, next) {
 exports.userWithToken = function (req, res, next) {
     var response = [];
     var token = req.params.token;
-    connection.query("SELECT * FROM user WHERE token=" + token + "", function (err, result, fields) {
+    connectionOnline.query("SELECT * FROM user WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -45,7 +45,7 @@ exports.addNewUser = function (req, res, next) {
     var age = req.body.age;
     var wallet = req.body.wallet;
     var imageUrl = req.body.url;
-    connection.query("INSERT INTO user (token, surname, name, age, wallet, imageurlprofile) VALUES ('" + token + "', '" + surname + "', '" + name + "', '" + age + "', '" + wallet + "', '" + imageUrl + "')", function (err, result, fields) {
+    connectionOnline.query("INSERT INTO user (token, surname, name, age, wallet, imageurlprofile) VALUES ('" + token + "', '" + surname + "', '" + name + "', '" + age + "', '" + wallet + "', '" + imageUrl + "')", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -56,7 +56,7 @@ exports.addNewUser = function (req, res, next) {
 
 exports.deleteUser = function (req, res, next) {
     var token = req.body.user;
-    connection.query("DELETE FROM user WHERE token=" + token + "", function (err, result, fields) {
+    connectionOnline.query("DELETE FROM user WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -73,7 +73,7 @@ exports.updateUser = function (req, res, next) {
     var wallet = req.body.wallet;
     var imageUrl = req.body.url;
 
-    connection.query("UPDATE user SET surname='" + surname + "', name='" + name + "', age='" + age + "', wallet='" + wallet + "', imageurlprofile='" + imageUrl + "' WHERE token=" + token + "", function (err, result, fields) {
+    connectionOnline.query("UPDATE user SET surname='" + surname + "', name='" + name + "', age='" + age + "', wallet='" + wallet + "', imageurlprofile='" + imageUrl + "' WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
