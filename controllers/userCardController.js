@@ -106,10 +106,10 @@ exports.getAllUserCardWithToken = function (req, res, next) {
                     request.on('error', (e) => {
                         console.error(e);
                     });
-                    console.log(cards);
                     request.end();
                 });
-                res.json(result);
+                console.log(cards);
+                res.json(cards);
             }
         });
 }
