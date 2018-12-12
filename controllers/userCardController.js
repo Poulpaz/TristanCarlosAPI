@@ -18,8 +18,8 @@ var connectionLocal = mysql.createConnection({
 
 
 exports.listUserCard = function (req, res, next) {
-    var response = [];
-    /* connectionOnline.query("SELECT * FROM usercard, card, user WHERE usercard.user_iduser=user.iduser AND usercard.card_idcard=card.idcard", function (err, result, fields) {
+    
+    connectionOnline.query("SELECT * FROM usercard, card, user WHERE usercard.user_iduser=user.iduser AND usercard.card_idcard=card.idcard", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -29,7 +29,7 @@ exports.listUserCard = function (req, res, next) {
             });
             res.json(result);
         }
-    }); */
+    });
 
     connectionLocal.query("SELECT * FROM usercard, user WHERE usercard.user_iduser=user.iduser", function (err, result, fields) {
         if (err) {
@@ -45,7 +45,7 @@ exports.listUserCard = function (req, res, next) {
 }
 
 exports.getUserCardWithId = function (req, res, next) {
-    var response = [];
+    
     var idUserCard = req.params.idUserCard;
     connectionOnline.query("SELECT * FROM usercard, card WHERE usercard.card_idcard=card.idcard AND idusercard=" + idUserCard + "", function (err, result, fields) {
         if (err) {
@@ -98,7 +98,7 @@ exports.updateUserCard = function (req, res, next) {
 }
 
 exports.getAllUserCardWithToken = function (req, res, next) {
-    var token = req.headers.token;
+    var token = req.params.token;
     connectionOnline.query("SELECT * FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token
         + "", function (err, result, fields) {
             if (err) {
