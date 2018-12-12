@@ -44,7 +44,7 @@ module.exports = function (app) {
 
     /* Routes users */
 
-    app.route('/').get((res,req) => {
+    app.route('/').get(function (req, res, next) {
         res.send("Hello")
     })
 
