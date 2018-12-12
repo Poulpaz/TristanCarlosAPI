@@ -44,6 +44,10 @@ module.exports = function (app) {
 
     /* Routes users */
 
+    app.route('/').get((res,req) => {
+        res.send("Hello")
+    })
+
     //Get every users
     app.route('/api/users').get(userController.listUser);
 
