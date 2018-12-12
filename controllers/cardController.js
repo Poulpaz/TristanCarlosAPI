@@ -8,6 +8,7 @@ var connectionOnline = mysql.createConnection({
     database: 'tristancarlosapi'
 });
 
+/* Get all cards on external API */
 exports.listCard = function (req, res, next) {
     var option = "https://api.elderscrollslegends.io/v1/cards";
     var data = "";
@@ -27,6 +28,7 @@ exports.listCard = function (req, res, next) {
     request.end();
 }
 
+/* Get one card with token on external API */
 exports.cardWithId = function (req, res, next) {
     var idcard = req.params.id;
 
