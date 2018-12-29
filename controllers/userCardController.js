@@ -90,7 +90,7 @@ exports.getAllUserCardWithToken = function (req, res, next) {
             Object.keys(result).forEach(function (key) {
                 var row = result[key];
                 console.log(row.card_idcard);
-
+            });
         }
         res.json(result);
     });
