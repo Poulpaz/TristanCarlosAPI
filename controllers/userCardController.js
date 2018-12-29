@@ -80,19 +80,34 @@ exports.getAllUserCardWithToken = function (req, res, next) {
     var cards = [];
     var token = req.params.token;
 
-    var response = [];
-        connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token
-                                       + "", function (err, result, fields) {
-            if (err) {
-                throw err;
-            } else {
-                Object.keys(result).forEach(function (key) {
-                    var row = result[key];
-                    console.log(row.surname);
-                });
-                res.json(result);
-            }
-        });
+    var option = "https://api.elderscrollslegends.io/v1/cards/";
+    var data = "";
+
+    connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token + "", function (err, result, fields) {
+        if (err) {
+            throw err;
+        } else {
+            Object.keys(result).forEach(function (key) {
+                var row = result[key];
+                console.log(row.card_idcard);
+                var request = https.get(option + row.card_idcard, (result) => {
+                        result.on('data', (d) => {
+                            data += d;
+                        });
+                        result.on('end', function () {
+                            var card = JSON.parse(data);
+                            res.json(card);
+                        });
+                    });
+                    request.on('error', (e) => {
+                        console.error(e);
+                    });
+                    request.end();
+             });
+        }
+    });
+
+
 
 /*
     connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token
