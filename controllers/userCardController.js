@@ -10,7 +10,7 @@ var connectionOnline = mysql.createConnection({
 
 exports.listUserCard = function (req, res, next) {
 
-    connectionOnline.query("SELECT * FROM usercard, user WHERE usercard.user_iduser=user.iduser AND usercard.card_idcard=card.idcard", function (err, result, fields) {
+    connectionOnline.query("SELECT * FROM usercard, user WHERE usercard.user_iduser=user.idUser", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -26,7 +26,7 @@ exports.listUserCard = function (req, res, next) {
 exports.getUserCardWithId = function (req, res, next) {
 
     var idUserCard = req.params.idUserCard;
-    connectionOnline.query("SELECT * FROM usercard, card WHERE usercard.card_idcard=card.idcard AND idusercard=" + idUserCard + "", function (err, result, fields) {
+    connectionOnline.query("SELECT * FROM usercard WHERE idusercard=" + idUserCard + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -90,26 +90,25 @@ exports.getAllUserCardWithToken = function (req, res, next) {
                 var row = result[key];
                 console.log(row.card_idcard);
             });
-
-            result.forEach(card => {
-                var request = https.get(option + card.card_idcard, (result) => {
-                    result.on('data', (d) => {
-                        data += d;
-                    });
-                    result.on('end', function () {
-                        var card = JSON.parse(data);
-                        res.json(card);
-                    });
-                });
-                request.on('error', (e) => {
-                    console.error(e);
-                });
-                request.end();
-            });
         }
-        //res.json(result);
+        res.json(result);
     });
 
+    res.forEach(card => {
+        var request = https.get(option + card.card_idcard, (result) => {
+            result.on('data', (d) => {
+                data += d;
+            });
+            result.on('end', function () {
+                var card = JSON.parse(data);
+                res.json(card);
+            });
+        });
+        request.on('error', (e) => {
+            console.error(e);
+        });
+        request.end();
+    });
 
 
     /*
