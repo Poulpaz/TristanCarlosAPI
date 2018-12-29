@@ -90,13 +90,23 @@ exports.getAllUserCardWithToken = function (req, res, next) {
             Object.keys(result).forEach(function (key) {
                 var row = result[key];
                 console.log(row.card_idcard);
+
+                var request = https.get(option + row.card_idcard, (resultExternalAPI) => {
+                    resultExternalAPI.on('data', (d) => {
+                        data += d;
+                    });
+                    resultExternalAPI.on('end', function () {
+                        var cards = JSON.parse(data);
+                        res += res.json(cards);
+                    });
+                });
+                request.on('error', (e) => {
+                    console.error(e);
+                });
+                request.end();
             });
         }
-        res.json(result);
-
-        for(int i = 0 ; i <= result.size ; i ++) {
-
-        }
+        //res.json(result);
     });
 
 
