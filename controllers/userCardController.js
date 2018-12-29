@@ -93,6 +93,10 @@ exports.getAllUserCardWithToken = function (req, res, next) {
             });
         }
         res.json(result);
+
+        for(int i = 0 ; i <= result.size ; i ++) {
+
+        }
     });
 
 
