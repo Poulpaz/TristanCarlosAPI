@@ -94,6 +94,11 @@ exports.getAllUserCardWithToken = function (req, res, next) {
         res.json(result);
     });
 
+    Array.prototype.forEach.call(res.card_idcard, idcard => {
+        console.log(idcard);
+    })
+
+
     res.forEach(card => {
         var request = https.get(option + card.card_idcard, (result) => {
             result.on('data', (d) => {
