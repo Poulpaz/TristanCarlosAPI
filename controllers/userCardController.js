@@ -77,7 +77,6 @@ exports.updateUserCard = function (req, res, next) {
 }
 
 exports.getAllUserCardWithToken = function (req, res, next) {
-    var cards = [];
     var token = req.params.token;
 
     var option = "https://api.elderscrollslegends.io/v1/cards/";
@@ -91,13 +90,13 @@ exports.getAllUserCardWithToken = function (req, res, next) {
                 var row = result[key];
                 console.log(row.card_idcard);
 
-                var request = https.get(option + row.card_idcard, (resultExternalAPI) => {
-                    resultExternalAPI.on('data', (d) => {
+                var request = https.get(option + row.card_idcard, (result) => {
+                    result.on('data', (d) => {
                         data += d;
                     });
-                    resultExternalAPI.on('end', function () {
-                        var cards = JSON.parse(data);
-                        res += res.json(cards);
+                    result.on('end', function () {
+                        var card = JSON.parse(data);
+                        res.json(card);
                     });
                 });
                 request.on('error', (e) => {
