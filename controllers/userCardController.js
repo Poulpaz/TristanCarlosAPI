@@ -82,15 +82,17 @@ exports.getAllUserCardWithToken = function (req, res, next) {
     var option = "https://api.elderscrollslegends.io/v1/cards/";
     var data = "";
 
-    connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token + "", function (err, result, fields) {
+    connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.idUser AND user.token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
             Object.keys(result).forEach(function (key) {
                 var row = result[key];
                 console.log(row.card_idcard);
+            });
 
-                var request = https.get(option + row.card_idcard, (result) => {
+            result.forEach(card => {
+                var request = https.get(option + card.card_idcard, (result) => {
                     result.on('data', (d) => {
                         data += d;
                     });
@@ -110,38 +112,38 @@ exports.getAllUserCardWithToken = function (req, res, next) {
 
 
 
-/*
-    connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token
-        + "", function (err, result, fields) {
-            if (err) {
-                throw err;
-            } else {
-                Object.keys(result).forEach(function (key) {
-                    var row = result[key];
-                    console.log(row.card_idcard);
-
-                    var option = "https://api.elderscrollslegends.io/v1/cards/" + row.card_idcard;
-                    var data = "";
-                
-                    var request = https.get(option, (result) => {
-                        result.on('data', (d) => {
-                            data += d;
+    /*
+        connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.idUser AND user.token=" + token
+            + "", function (err, result, fields) {
+                if (err) {
+                    throw err;
+                } else {
+                    Object.keys(result).forEach(function (key) {
+                        var row = result[key];
+                        console.log(row.card_idcard);
+    
+                        var option = "https://api.elderscrollslegends.io/v1/cards/" + row.card_idcard;
+                        var data = "";
+                    
+                        var request = https.get(option, (result) => {
+                            result.on('data', (d) => {
+                                data += d;
+                            });
+                            result.on('end', function () {
+                                //var card = JSON.parse(data);
+                                cards.push(JSON.parse(data))
+                                //console.log(JSON.parse(data));
+    
+                                //res.json(card);
+                            });
                         });
-                        result.on('end', function () {
-                            //var card = JSON.parse(data);
-                            cards.push(JSON.parse(data))
-                            //console.log(JSON.parse(data));
-
-                            //res.json(card);
+                        request.on('error', (e) => {
+                            console.error(e);
                         });
+                        request.end();
                     });
-                    request.on('error', (e) => {
-                        console.error(e);
-                    });
-                    request.end();
-                });
-                console.log(cards);
-                res.json(cards);
-            }
-        }); */
+                    console.log(cards);
+                    res.json(cards);
+                }
+            }); */
 }
