@@ -79,6 +79,22 @@ exports.updateUserCard = function (req, res, next) {
 exports.getAllUserCardWithToken = function (req, res, next) {
     var cards = [];
     var token = req.params.token;
+
+    var response = [];
+        connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token
+                                       + "", function (err, result, fields) {
+            if (err) {
+                throw err;
+            } else {
+                Object.keys(result).forEach(function (key) {
+                    var row = result[key];
+                    console.log(row.surname);
+                });
+                res.json(result);
+            }
+        });
+
+/*
     connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.iduser AND user.token=" + token
         + "", function (err, result, fields) {
             if (err) {
@@ -111,5 +127,5 @@ exports.getAllUserCardWithToken = function (req, res, next) {
                 console.log(cards);
                 res.json(cards);
             }
-        });
+        }); */
 }

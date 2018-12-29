@@ -18,7 +18,7 @@ module.exports = function (app) {
     //Get every cards + Heroku - home/shop
     app.route('/api/cards').get(cardController.listCard);
 
-    //Get only one card per id + Heroku - home/shop
+    //Get only one card per id + Heroku - home/shop -
     app.route('/api/card/:id').get(cardController.cardWithId);
 
 
@@ -60,7 +60,7 @@ module.exports = function (app) {
     //Get every users
     app.route('/api/users').get(userController.listUser);
 
-    //Get only one user per token
+    //Get only one user per token + Heroku
     app.route('/api/user/:token').get(userController.userWithToken);
 
     //Add a new user with name, surname and age
