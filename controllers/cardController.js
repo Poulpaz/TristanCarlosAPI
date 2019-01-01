@@ -49,37 +49,3 @@ exports.cardWithId = function (req, res, next) {
     });
     request.end();
 }
-
-exports.addNewCard = function (req, res, next) {
-    var libelle = req.body.libelle;
-    connectionOnline.query("INSERT INTO card (libelle) VALUES ('" + libelle + "')", function (err, result, fields) {
-        if (err) {
-            throw err;
-        } else {
-            console.log("Card has inserted into table ! :)");
-        }
-    });
-}
-
-exports.deleteCard = function (req, res, next) {
-    var idCard = req.params.idcard;
-    connectionOnline.query("DELETE FROM card WHERE idcard=" + idCard + "", function (err, result, fields) {
-        if (err) {
-            throw err;
-        } else {
-            console.log("Card has deleted from table card ! :)");
-        }
-    });
-}
-
-exports.updateCard = function (req, res, next) {
-    var idCard = req.headers.card;
-    var libelle = req.body.libelle;
-    connectionOnline.query("UPDATE card SET libelle='" + libelle + "' WHERE idcard=" + idCard + "", function (err, result, fields) {
-        if (err) {
-            throw err;
-        } else {
-            console.log("Card has updated into table ! :)");
-        }
-    });
-}

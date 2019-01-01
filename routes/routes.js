@@ -22,18 +22,6 @@ module.exports = function (app) {
     app.route('/api/card/:id').get(cardController.cardWithId);
 
 
-    /*
-    //Add a new card that's will be available in shop
-    app.route('/api/card').post(cardController.addNewCard);
-
-    //Delete a card from shop
-    app.route('/api/card').delete(cardController.deleteCard);
-
-    //Update a card in card table (idCard)
-    app.route('/api/card').put(cardController.updateCard);
-    */
-
-
     /* Routes userCards */
 
     //Get every cards per one user (with token)
@@ -42,17 +30,14 @@ module.exports = function (app) {
     //Get all cards from userCard
     app.route('/api/user/cards').get(userCardController.listUserCard);
 
-    //Get only one card from userCard
-    app.route('/api/user/card/:idUserCard').get(userCardController.getUserCardWithId);
+    //Update a card in userCard table - Exchange
+    app.route('/api/user/card').put(userCardController.updateUserCard);
 
     //Add a card associated to an user in userCard
     app.route('/api/user/card').post(userCardController.addNewUserCard);
 
     //Delete a card in userCard with idUser and idCard
     app.route('/api/user/card').delete(userCardController.deleteUserCard);
-
-    //Update a card in userCard table (idCard + idUser)
-    app.route('/api/user/card').put(userCardController.updateUserCard);
 
 
     /* Routes users */
@@ -63,12 +48,12 @@ module.exports = function (app) {
     //Get only one user per token + Heroku
     app.route('/api/user/:token').get(userController.userWithToken);
 
-    //Add a new user with name, surname and age
+    //Add a new user with specifies
     app.route('/api/user').post(userController.addNewUser);
 
     //Delete an user with token
     app.route('/api/user').delete(userController.deleteUser);
 
-    //Update an user in user table (token)
+    //Update an user with token and specifies
     app.route('/api/user').put(userController.updateUser);
 };
