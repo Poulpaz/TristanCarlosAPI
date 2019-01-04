@@ -16,22 +16,22 @@ module.exports = function (app) {
     /* Routes cards */
 
     //Get every cards + Heroku - home/shop
-    app.route('/api/getCardsFromShop').get(cardController.listCard);
+    app.route('/api/cardsFromShop').get(cardController.listCard);
 
     //Get only one card per id + Heroku - home/shop -
-    app.route('/api/getDetailsCard/:id').get(cardController.cardWithId);
+    app.route('/api/detailsCard/:id').get(cardController.cardWithId);
 
 
     /* Routes userCards */
 
     //Get every cards per one user (with token)
-    app.route('/api/getCardsBelongingUser/:token').get(userCardController.getAllUserCardWithToken);
+    app.route('/api/cardsBelongingUser/:token').get(userCardController.getAllUserCardWithToken);
 
     //Get all cards from userCard
-    app.route('/api/getCardsOwned').get(userCardController.listUserCard);
+    app.route('/api/cardsOwned').get(userCardController.listUserCard);
 
     //Update a card in userCard table - Exchange
-    app.route('/api/updateOwnership').put(userCardController.updateUserCard);
+    app.route('/api/changeOwnership').put(userCardController.updateUserCard);
 
     //Add a card associated to an user in userCard
     app.route('/api/addOwnership').post(userCardController.addNewUserCard);
@@ -43,10 +43,10 @@ module.exports = function (app) {
     /* Routes users */
 
     //Get every users
-    app.route('/api/getUsers').get(userController.listUser);
+    app.route('/api/users').get(userController.listUser);
 
     //Get only one user per token + Heroku
-    app.route('/api/getRegisteredUser/:token').get(userController.userWithToken);
+    app.route('/api/registeredUser/:token').get(userController.userWithToken);
 
     //Add a new user with specifies
     app.route('/api/registerUser').post(userController.addNewUser);
