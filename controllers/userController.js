@@ -37,7 +37,7 @@ exports.userWithToken = function (req, res, next) {
 }
 
 exports.addNewUser = function (req, res, next) {
-    var token = req.body.token
+    var token = req.headers.token
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var mail = req.body.mail;
@@ -54,7 +54,7 @@ exports.addNewUser = function (req, res, next) {
 }
 
 exports.deleteUser = function (req, res, next) {
-    var token = req.body.user;
+    var token = req.headers.user;
     connectionOnline.query("DELETE FROM user WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
@@ -65,7 +65,7 @@ exports.deleteUser = function (req, res, next) {
 }
 
 exports.updateUser = function (req, res, next) {
-    var token = req.body.token
+    var token = req.headers.token
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var mail = req.body.mail;
