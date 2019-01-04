@@ -40,10 +40,10 @@ exports.getAllUserCardWithToken = function (req, res, next) {
 }
 
 exports.updateUserCard = function (req, res, next) {
-    var idOldUser = req.body.olduser;
+    var tokenOldUser = req.headers.olduser;
     var user_idUser = req.body.user;
     var card_idCard = req.body.card;
-    connectionOnline.query("UPDATE usercard SET user_iduser='" + user_idUser + "' WHERE user_iduser='" + idOldUser + "' AND card_idcard='" + card_idCard + "'", function (err, result, fields) {
+    connectionOnline.query("UPDATE usercard SET user_iduser='" + user_idUser + "' WHERE user_iduser='" + tokenOldUser + "' AND card_idcard='" + card_idCard + "'", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
