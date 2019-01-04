@@ -21,7 +21,7 @@ Récupération d'un joueur inscrit sur le serveur avec son token - Récupératio
 <code>https://tristancarlosapi.herokuapp.com/api/getRegisteredUser/:token</code> Méthode : <b>GET</b></br></br>
 Inscription d'un nouvel utilisateur sur le serveur.</br>
 <code>https://tristancarlosapi.herokuapp.com/api/registerUser</code> Méthode : <b>POST</b></br></br>
-Renseigner les champs suivants :</br> <li><ul>Dans le "headers" :  <b>token</b> (token de l'utilisateur).</ul></br><ul> Dans le "body" :  <b>firstname</b> (prénom du joueur), <b>lastname</b> (nom du joueur), <b>mail</b> (adresse email du joueur), <b>password</b> (mot de passe du joueur), <b>age</b> (age du joueur), <b>url</b> (photo de profil du joueur)</ul></li></br></br>
+Renseigner les champs suivants :</br><ul><li>Dans le "headers" :  <b>token</b> (token de l'utilisateur).</li><li> Dans le "body" :  <b>firstname</b> (prénom du joueur), <b>lastname</b> (nom du joueur), <b>mail</b> (adresse email du joueur), <b>password</b> (mot de passe du joueur), <b>age</b> (age du joueur), <b>url</b> (photo de profil du joueur)</li></ul></br></br>
 ## Technologies
 
 
