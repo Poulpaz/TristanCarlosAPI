@@ -18,7 +18,8 @@ Renseigner les champs suivants : <b>olduser</b> (token de l'ancien possesseur), 
 Récupération de tous les joueurs inscrits sur le serveur.</br>
 <code>https://tristancarlosapi.herokuapp.com/api/users</code> Méthode : <b>GET</b></br></br>
 Récupération d'un joueur inscrit sur le serveur avec son token - Récupération du profil.</br>
-<code>https://tristancarlosapi.herokuapp.com/api/registeredUser/:token</code> Méthode : <b>GET</b></br></br>
+<code>https://tristancarlosapi.herokuapp.com/api/registeredUser</code> Méthode : <b>GET</b></br></br>
+Renseigner les champs suivants : <b>token</b> (token de l'utilisateur)</br></br>
 Inscription d'un nouvel utilisateur sur le serveur.</br>
 <code>https://tristancarlosapi.herokuapp.com/api/registerUser</code> Méthode : <b>POST</b></br></br>
 Renseigner les champs suivants :</br><ul><li>Dans le "headers" :  <b>token</b> (token de l'utilisateur).</li><li> Dans le "body" :  <b>firstname</b> (prénom du joueur), <b>lastname</b> (nom du joueur), <b>mail</b> (adresse email du joueur), <b>password</b> (mot de passe du joueur), <b>age</b> (age du joueur), <b>url</b> (photo de profil du joueur)</li></ul></br></br>
