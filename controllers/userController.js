@@ -54,7 +54,7 @@ exports.addNewUser = function (req, res, next) {
 }
 
 exports.deleteUser = function (req, res, next) {
-    var token = req.headers.user;
+    var token = req.headers.token;
     connectionOnline.query("DELETE FROM user WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
