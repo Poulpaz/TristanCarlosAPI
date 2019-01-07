@@ -31,7 +31,7 @@ exports.userWithToken = function (req, res, next) {
                 var row = result[key];
                 console.log(row.surname);
             });
-            res.json(result);
+            res.json(result.get(0));
         }
     });
 }
