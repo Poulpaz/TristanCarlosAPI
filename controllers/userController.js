@@ -23,12 +23,13 @@ exports.listUser = function (req, res, next) {
 
 exports.userWithToken = function (req, res, next) {
     var token = req.headers.token;
+    var row;
     connectionOnline.query("SELECT * FROM user WHERE token=" + token + " LIMIT 1", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
             Object.keys(result).forEach(function (key) {
-                var row = result[key];
+                row = result[key];
                 console.log(row.surname);
             });
             res.json(row);
