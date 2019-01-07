@@ -22,7 +22,7 @@ exports.listUser = function (req, res, next) {
 }
 
 exports.userWithToken = function (req, res, next) {
-    var token = req.params.token;
+    var token = req.headers.token;
     connectionOnline.query("SELECT * FROM user WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;

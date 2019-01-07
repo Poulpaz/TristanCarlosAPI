@@ -46,7 +46,7 @@ module.exports = function (app) {
     app.route('/api/users').get(userController.listUser);
 
     //Get only one user per token + Heroku
-    app.route('/api/registeredUser/:token').get(userController.userWithToken);
+    app.route('/api/registeredUser').get(userController.userWithToken);
 
     //Add a new user with specifies
     app.route('/api/registerUser').post(userController.addNewUser);
