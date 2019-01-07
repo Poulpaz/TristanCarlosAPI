@@ -28,10 +28,10 @@ exports.userWithToken = function (req, res, next) {
             throw err;
         } else {
             Object.keys(result).forEach(function (key) {
-                var result = result[key];
+                var row = result[key];
                 console.log(row.surname);
             });
-            res.json(result);
+            res.json(row);
         }
     });
 }
