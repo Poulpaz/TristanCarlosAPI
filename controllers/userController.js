@@ -52,6 +52,7 @@ exports.addNewUser = function (req, res, next) {
         } else {
             console.log("User has inserted into table ! :)");
         }
+        res.send('OK');
     });
 }
 
