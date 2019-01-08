@@ -49,7 +49,7 @@ module.exports = function (app) {
     app.route('/api/registeredUser').get(userController.userWithToken);
 
     //Add a new user with specifies
-    app.route('/api/registerUser').poste(userController.addNewUser);
+    app.route('/api/registerUser').post(userController.addNewUser);
 
     //Delete an user with token
     app.route('/api/deleteUser').delete(userController.deleteUser);
