@@ -38,7 +38,8 @@ exports.userWithToken = function (req, res, next) {
 }
 
 exports.addNewUser = function (req, res, next) {
-    var token = req.headers.token
+    console.log(req.body);
+    var token = req.headers.token;
     var firstname = req.body.user.firstname;
     var lastname = req.body.user.lastname;
     var age = req.body.user.age;
