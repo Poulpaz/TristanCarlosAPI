@@ -40,12 +40,12 @@ exports.userWithToken = function (req, res, next) {
 exports.addNewUser = function (req, res, next) {
     console.log(req.body);
     var token = req.headers.token;
-    var firstname = req.body.user.firstname;
-    var lastname = req.body.user.lastname;
-    var age = req.body.user.age;
-    var mail = req.body.user.mail;
-    var wallet = req.body.user.wallet;
-    var imageUrl = req.body.user.url;
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var age = req.body.age;
+    var mail = req.body.mail;
+    var wallet = req.body.wallet;
+    var imageUrl = req.body.url;
     connectionOnline.query("INSERT INTO user (token, firstname, lastname, age, mail, wallet, imageUrlProfile) VALUES ('" + token + "', '" + firstname + "', '" + lastname + "', '" + age + "', '" + mail + "', '" + wallet + "', '" + imageUrl + "')", function (err, result, fields) {
         if (err) {
             throw err;
