@@ -37,10 +37,11 @@ exports.addNewUser = function (req, res, next) {
     var token = req.body.token;
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
+    var birthday = req.body.birthday;
     var mail = req.body.mail;
     var wallet = req.body.wallet;
     var url = req.body.url;
-    connectionOnline.query("INSERT INTO user (token, firstname, lastname, mail, wallet, url) VALUES ('" + token + "', '" + firstname + "', '" + lastname + "', '" + mail + "', '" + wallet + "', '" + url + "')", function (err, result, fields) {
+    connectionOnline.query("INSERT INTO user (token, firstname, lastname, birthday, mail, wallet, url) VALUES ('" + token + "', '" + firstname + "', '" + lastname + "', '" + birthday + "', '" + mail + "', '" + wallet + "', '" + url + "')", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
@@ -64,11 +65,12 @@ exports.updateUser = function (req, res, next) {
     var token = req.headers.token
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
+    var birthday = req.body.birthday;
     var mail = req.body.mail;
     var wallet = req.body.wallet;
     var imageUrl = req.body.url;
 
-    connectionOnline.query("UPDATE user SET firstname='" + firstname + "', lastname='" + lastname + "', mail='" + mail + "', wallet='" + wallet + "', url='" + imageUrl + "' WHERE token=" + token + "", function (err, result, fields) {
+    connectionOnline.query("UPDATE user SET firstname='" + firstname + "', lastname='" + lastname + "', birthday='" + birthday + "', mail='" + mail + "', wallet='" + wallet + "', url='" + imageUrl + "' WHERE token=" + token + "", function (err, result, fields) {
         if (err) {
             throw err;
         } else {
