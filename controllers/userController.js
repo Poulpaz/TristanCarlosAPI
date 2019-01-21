@@ -22,7 +22,7 @@ exports.userWithToken = function (req, res, next) {
         else {
             Object.keys(result).forEach(function (key) { row = result[key]; });
             if(row != null) { res.json( { code: 200, user: { idUser: row.idUser, lastaname: row.lastaname, firstname: row.firstname, birthday: row.birthday, mail: row.mail, wallet: row.wallet, url: row.url }, token: row.token } ); }
-            else { res.json( { code: 1, user: { idUser: "", lastaname: "", firstname: "", birthday: "", mail: "", wallet: "", url: "" }, token: "" } ); }
+            else { res.json( { code: 1, user: null, token: null } ); }
         }
     });
 }
