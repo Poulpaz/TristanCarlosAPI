@@ -28,7 +28,11 @@ exports.userWithToken = function (req, res, next) {
                 row = result[key];
                 console.log(row.surname);
             });
-            res.json(row);
+            if(row != null) {
+                res.json( { code: 200, user: { idUser: row.idUser, lastaname: row.lastaname, firstname: row.firstname, birthday: row.birthday, mail: row.mail, wallet: row.wallet, url: row.url }, token: row.token } );
+            } else {
+                res.json( { code: 1, user: { idUser: "", lastaname: "", firstname: "", birthday: "", mail: "", wallet: "", url: "" }, token: "" } );
+            }
         }
     });
 }
