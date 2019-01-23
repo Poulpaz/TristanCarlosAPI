@@ -17,7 +17,7 @@ exports.listUserCard = function (req, res, next) {
 
 exports.getAllUserCardsWithId = function (req, res, next) {
     var id = req.params.id;
-    connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser = " + id + "", function (err, result, fields) {
+    connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE user.idUser = user_iduser AND user_iduser= " + id + "", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json(result); }
     });
