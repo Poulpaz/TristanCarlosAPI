@@ -15,9 +15,9 @@ exports.listUserCard = function (req, res, next) {
     });
 }
 
-exports.getAllUserCardWithToken = function (req, res, next) {
-    var token = req.params.token;
-    connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser=user.idUser AND user.token=" + token + "", function (err, result, fields) {
+exports.getAllUserCardsWithId = function (req, res, next) {
+    var id = req.params.id;
+    connectionOnline.query("SELECT card_idcard FROM usercard, user WHERE usercard.user_iduser = " + id + "", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json(result); }
     });
