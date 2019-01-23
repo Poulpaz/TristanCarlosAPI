@@ -25,8 +25,8 @@ exports.getAllUserCardWithToken = function (req, res, next) {
 
 exports.updateUserCard = function (req, res, next) {
     var tokenOldUser = req.headers.olduser;
-    var user_idUser = req.body.user;
-    var card_idCard = req.body.card;
+    var user_idUser = req.body.idUser;
+    var card_idCard = req.body.idCard;
     connectionOnline.query("UPDATE usercard SET user_iduser='" + user_idUser + "' WHERE user_iduser='" + tokenOldUser + "' AND card_idcard='" + card_idCard + "'", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "Le possesseur a été mis à jour." }); }
@@ -34,8 +34,8 @@ exports.updateUserCard = function (req, res, next) {
 }
 
 exports.addNewUserCard = function (req, res, next) {
-    var user_idUser = req.body.user;
-    var card_idCard = req.body.card;
+    var user_idUser = req.body.idUser;
+    var card_idCard = req.body.idCard;
     connectionOnline.query("INSERT INTO usercard (user_iduser, card_idcard) VALUES ('" + user_idUser + "', '" + card_idCard + "')", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "La carte a été acquise." }); }
@@ -43,8 +43,8 @@ exports.addNewUserCard = function (req, res, next) {
 }
 
 exports.deleteUserCard = function (req, res, next) {
-    var user_idUser = req.body.user;
-    var card_idCard = req.body.card;
+    var user_idUser = req.body.idUser;
+    var card_idCard = req.body.idCard;
     connectionOnline.query("DELETE FROM usercard WHERE user_iduser=" + user_idUser + " AND card_idcard=" + card_idCard + "", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "La possession a été supprimée." }); }
