@@ -24,7 +24,7 @@ exports.getAllUserCardsWithId = function (req, res, next) {
 }
 
 exports.updateUserCard = function (req, res, next) {
-    var user_idUser_old = req.body.oldIdUser;
+    var user_idUser_old = req.headers.oldIdUser;
     var user_idUser = req.body.idUser;
     var card_idCard = req.body.idCard;
     connectionOnline.query("UPDATE usercard SET user_iduser='" + user_idUser + "' WHERE user_iduser='" + user_idUser_old + "' AND card_idcard='" + card_idCard + "'", function (err, result, fields) {
