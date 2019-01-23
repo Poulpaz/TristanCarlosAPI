@@ -25,7 +25,7 @@ module.exports = function (app) {
     /* Routes userCards */
 
     //Get every cards per one user (with token)
-    app.route('/api/cardsBelongingUser/:id').get(userCardController.getAllUserCardsWithId);
+    app.route('/api/getAllUserCardsWithId/:id').get(userCardController.getAllUserCardsWithId);
 
     //Get all cards from userCard
     app.route('/api/listUserCard').get(userCardController.listUserCard);
