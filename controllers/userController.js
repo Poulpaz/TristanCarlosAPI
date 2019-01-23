@@ -21,7 +21,7 @@ exports.userWithToken = function (req, res, next) {
         if (err) { throw err; }
         else {
             Object.keys(result).forEach(function (key) { row = result[key]; });
-            if(row != null) { res.json( { code: 200, user: { idUser: row.idUser, lastname: row.lastname, firstname: row.firstname, birthday: row.birthday, mail: row.mail, wallet: row.wallet, url: row.url }, token: row.token } ); }
+            if(row != null) { res.json( { code: 200, user: { idUser: row.idUser, lastname: row.lastname, firstname: row.firstname, mail: row.mail, wallet: row.wallet, url: row.url }, token: row.token } ); }
             else { res.json( { code: 1, user: null, token: null } ); }
         }
     });
@@ -31,11 +31,10 @@ exports.addNewUser = function (req, res, next) {
     var token = req.body.token;
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
-    var birthday = req.body.birthday;
     var mail = req.body.mail;
     var wallet = req.body.wallet;
     var url = req.body.url;
-    connectionOnline.query("INSERT INTO user (token, firstname, lastname, birthday, mail, wallet, url) VALUES ('" + token + "', '" + firstname + "', '" + lastname + "', '" + birthday + "', '" + mail + "', '" + wallet + "', '" + url + "')", function (err, result, fields) {
+    connectionOnline.query("INSERT INTO user (token, firstname, lastname, mail, wallet, url) VALUES ('" + token + "', '" + firstname + "', '" + lastname + "', '" + mail + "', '" + wallet + "', '" + url + "')", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "Inscription effectuée avec succès." }); }
     });
@@ -53,11 +52,10 @@ exports.updateUser = function (req, res, next) {
     var token = req.headers.token
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
-    var birthday = req.body.birthday;
     var mail = req.body.mail;
     var wallet = req.body.wallet;
     var imageUrl = req.body.url;
-    connectionOnline.query("UPDATE user SET firstname='" + firstname + "', lastname='" + lastname + "', birthday='" + birthday + "', mail='" + mail + "', wallet='" + wallet + "', url='" + imageUrl + "' WHERE token=" + token + "", function (err, result, fields) {
+    connectionOnline.query("UPDATE user SET firstname='" + firstname + "', lastname='" + lastname + "', mail='" + mail + "', wallet='" + wallet + "', url='" + imageUrl + "' WHERE token=" + token + "", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "Vos informations personnelles ont bien été mises à jour." }); }
     });
