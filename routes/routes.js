@@ -25,19 +25,19 @@ module.exports = function (app) {
     /* Routes userCards */
 
     //Get every cards per one user (with token)
-    app.route('/api/cardsBelongingUser/:token').get(userCardController.getAllUserCardWithToken);
+    app.route('/api/cardsBelongingUser/:id').get(userCardController.getAllUserCardsWithId);
 
     //Get all cards from userCard
-    app.route('/api/cardsOwned').get(userCardController.listUserCard);
+    app.route('/api/listUserCard').get(userCardController.listUserCard);
 
     //Update a card in userCard table - Exchange
-    app.route('/api/changeOwnership').put(userCardController.updateUserCard);
+    app.route('/api/updateUserCard').put(userCardController.updateUserCard);
 
     //Add a card associated to an user in userCard
-    app.route('/api/addOwnership').post(userCardController.addNewUserCard);
+    app.route('/api/addNewUserCard').post(userCardController.addNewUserCard);
 
     //Delete a card in userCard with idUser and idCard
-    app.route('/api/deleteOwnership').delete(userCardController.deleteUserCard);
+    app.route('/api/deleteUserCard').delete(userCardController.deleteUserCard);
 
 
     /* Routes users */
