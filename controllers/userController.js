@@ -33,7 +33,7 @@ exports.addNewUser = function (req, res, next) {
     var lastname = req.body.lastname;
     var wallet = req.body.wallet;
     var url = req.body.url;
-    connectionOnline.query("INSERT INTO user (token, firstname, lastname, wallet, url) VALUES ('" + token + "', '" + firstname + "', '" + lastname + "', '" + mail + "', '" + wallet + "', '" + url + "')", function (err, result, fields) {
+    connectionOnline.query("INSERT INTO user (token, firstname, lastname, wallet, url) VALUES ('" + token + "', '" + firstname + "', '" + lastname + "', '" + wallet + "', '" + url + "')", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "Inscription effectuée avec succès." }); }
     });
