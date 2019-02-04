@@ -43,8 +43,8 @@ exports.addNewUserCard = function (req, res, next) {
 }
 
 exports.deleteUserCard = function (req, res, next) {
-    var user_idUser = req.body.idUser;
-    var card_idCard = req.body.idCard;
+    var user_idUser = req.params.idUser;
+    var card_idCard = req.params.idCard;
     connectionOnline.query("DELETE FROM usercard WHERE user_iduser=" + user_idUser + " AND card_idcard=" + card_idCard + "", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "La possession a été supprimée." }); }

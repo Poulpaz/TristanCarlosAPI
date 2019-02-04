@@ -37,7 +37,7 @@ module.exports = function (app) {
     app.route('/api/addNewUserCard').post(userCardController.addNewUserCard);
 
     //Delete a card in userCard with idUser and idCard
-    app.route('/api/deleteUserCard').delete(userCardController.deleteUserCard);
+    app.route('/api/deleteUserCard/:idUser/:idCard').delete(userCardController.deleteUserCard);
 
 
     /* Routes users */
