@@ -56,4 +56,10 @@ module.exports = function (app) {
 
     //Update an user with token and specifies
     app.route('/api/updateUser').put(userController.updateUser);
+
+
+    /* Routes exchange */
+
+    //Get every exchange
+    app.route('/api/exchanges').get(exchangeController.listExchange);
 };
