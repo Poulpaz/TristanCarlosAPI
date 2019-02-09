@@ -8,7 +8,7 @@ var connectionOnline = mysql.createConnection({
 });
 
 exports.listExchange = function (req, res, next) {
-    var idUser = req.param.idUser
+    var idUser = req.body.idUser
     connectionOnline.query("SELECT * FROM exchange WHERE idUser = '" + idUser + "' OR idOtherUser = '" + idUser + "'", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json(result); }
