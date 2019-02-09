@@ -63,4 +63,13 @@ module.exports = function (app) {
 
     //Get every exchange
     app.route('/api/exchanges').get(exchangeController.listExchange);
+
+    //Add a new exchange with specifies
+    app.route('/api/addExchange').post(userController.addNewExchange);
+
+    //Update an exchange with specifies
+    app.route('/api/updateExchange').post(userController.updateExchange);
+
+    //Delete an exchange
+    app.route('/api/deleteExchange').delete(userController.deleteExchange);
 };
