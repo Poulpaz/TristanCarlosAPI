@@ -65,11 +65,11 @@ module.exports = function (app) {
     app.route('/api/exchanges').get(exchangeController.listExchange);
 
     //Add a new exchange with specifies
-    app.route('/api/addExchange').post(userController.addNewExchange);
+    app.route('/api/addExchange').post(exchangeController.addNewExchange);
 
     //Update an exchange with specifies
-    app.route('/api/updateExchange').post(userController.updateExchange);
+    app.route('/api/updateExchange').put(exchangeController.updateExchange);
 
     //Delete an exchange
-    app.route('/api/deleteExchange').delete(userController.deleteExchange);
+    app.route('/api/deleteExchange').delete(exchangeController.deleteExchange);
 };
