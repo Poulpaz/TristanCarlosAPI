@@ -4,7 +4,8 @@ var connectionOnline = mysql.createConnection({
     host: 'db4free.net',
     user: 'tristancarlos',
     password: 'Jo33b42y&',
-    database: 'tristancarlosapi'
+    database: 'tristancarlosapi',
+    port: '3307'
 });
 
 exports.listUser = function (req, res, next) {

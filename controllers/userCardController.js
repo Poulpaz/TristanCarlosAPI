@@ -5,7 +5,8 @@ var connectionOnline = mysql.createConnection({
     host: 'db4free.net',
     user: 'tristancarlos',
     password: 'Jo33b42y&',
-    database: 'tristancarlosapi'
+    database: 'tristancarlosapi',
+    port: '3307'
 });
 
 exports.listUserCard = function (req, res, next) {
@@ -24,7 +25,7 @@ exports.getAllUserCardsWithId = function (req, res, next) {
 }
 
 exports.updateUserCard = function (req, res, next) {
-    var user_idUser_old = req.headers.oldIdUser;
+    var user_idUser_old = req.headers;
     var user_idUser = req.body.idUser;
     var card_idCard = req.body.idCard;
     connectionOnline.query("UPDATE usercard SET user_iduser='" + user_idUser + "' WHERE user_iduser='" + user_idUser_old + "' AND card_idcard='" + card_idCard + "'", function (err, result, fields) {
