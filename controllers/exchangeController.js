@@ -43,8 +43,8 @@ exports.updateExchange = function (req, res, next) {
 }
 
 exports.deleteExchange = function (req, res, next) {
-    var idExchange = req.body.idExchange;
-    connectionOnline.query("DELETE FROM exchange WHERE idExchange=" + idExchange + "", function (err, result, fields) {
+    var idExchange = req.params.idExchange;
+    connectionOnline.query("DELETE FROM exchange WHERE idExchange='" + idExchange + "'", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "Echange supprimé avec succès." }); }
     });
