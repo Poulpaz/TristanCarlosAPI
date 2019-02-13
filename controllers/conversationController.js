@@ -13,7 +13,7 @@ exports.listMessageIntoConversation = function (req, res, next) {
     idConversation = req.params.idConversation;
     connectionOnline.query("SELECT * FROM message, conversation WHERE message.conversation_idConversation = conversation.idConversation AND conversation.idConversation='" + idConversation + "'", function (err, result, fields) {
         if (err) { throw err; }
-        else { res.json( { "messages": [result] } ); }
+        else { res.json( { "messages": result } ); }
     });
 }
 
