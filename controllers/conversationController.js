@@ -11,7 +11,7 @@ var connectionOnline = mysql.createConnection({
 
 exports.listMessageIntoConversation = function (req, res, next) {
     idConversation = req.params.idConversation;
-    connectionOnline.query("SELECT * FROM message, conversation WHERE message.conversation_idConversation = conversation.idConversation AND conversation.idConversation='" + idConversation + "'", function (err, result, fields) {
+    connectionOnline.query("SELECT idMessage, conversation_idConversation, idUserMessage, messageContent, sendDate FROM message, conversation WHERE message.conversation_idConversation = conversation.idConversation AND conversation.idConversation='" + idConversation + "'", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json( { "messages": result } ); }
     });
@@ -23,7 +23,7 @@ exports.listConversation = function (req, res, next) {
     var idUser = req.params.idUser;
     connectionOnline.query("SELECT * FROM conversation WHERE idUser='" + idUser + "' OR idOtherUser='" + idUser + "'", function (err, result, fields) {
         if (err) { throw err; }
-        else { res.json(result); }
+        else { res.json( { "conversations": result } ); }
     });
 }
 
@@ -33,6 +33,6 @@ exports.listConversation = function (req, res, next) {
 exports.listMessage = function (req, res, next) {
     connectionOnline.query("SELECT * FROM message", function (err, result, fields) {
         if (err) { throw err; }
-        else { res.json(result); }
+        else { res.json( { "messages": result } ); }
     });
 }
