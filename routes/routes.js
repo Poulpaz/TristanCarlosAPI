@@ -5,6 +5,7 @@ module.exports = function (app) {
     var cardController = require('../controllers/cardController');
     var userController = require('../controllers/userController');
     var userCardController = require('../controllers/userCardController');
+    var exchangeController = require('../controllers/exchangeController');
 
     /* Routes test - debug */
 
@@ -37,7 +38,7 @@ module.exports = function (app) {
     app.route('/api/addNewUserCard').post(userCardController.addNewUserCard);
 
     //Delete a card in userCard with idUser and idCard
-    app.route('/api/deleteUserCard').delete(userCardController.deleteUserCard);
+    app.route('/api/deleteUserCard').post(userCardController.deleteUserCard);
 
 
     /* Routes users */
@@ -56,4 +57,19 @@ module.exports = function (app) {
 
     //Update an user with token and specifies
     app.route('/api/updateUser').put(userController.updateUser);
+
+
+    /* Routes exchange */
+
+    //Get every exchange
+    app.route('/api/exchanges/:id').get(exchangeController.listExchange);
+
+    //Add a new exchange with specifies
+    app.route('/api/addExchange').post(exchangeController.addNewExchange);
+
+    //Update an exchange with specifies
+    app.route('/api/updateExchange').put(exchangeController.updateExchange);
+
+    //Delete an exchange
+    app.route('/api/deleteExchange').delete(exchangeController.deleteExchange);
 };
