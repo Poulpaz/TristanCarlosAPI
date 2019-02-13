@@ -6,6 +6,7 @@ module.exports = function (app) {
     var userController = require('../controllers/userController');
     var userCardController = require('../controllers/userCardController');
     var exchangeController = require('../controllers/exchangeController');
+    var conversationController = require('../controllers/conversationController');
 
     /* Routes test - debug */
 
@@ -72,4 +73,17 @@ module.exports = function (app) {
 
     //Delete an exchange
     app.route('/api/deleteExchange/:idExchange').delete(exchangeController.deleteExchange);
+
+
+    /* Routes conversation / message */
+
+    //Get every messages into a conversation
+    app.route('/api/messenger/messages/:idConversation').get(conversationController.listMessageIntoConversation);
+
+    //Get every conversations for an user
+    app.route('/api/messenger/conversation/:idUser').get(conversationController.listConversation);
+
+    //Get every messages
+    app.route('/api/messenger/getAllMessages').get(conversationController.listMessage);
+
 };
