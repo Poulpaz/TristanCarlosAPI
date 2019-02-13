@@ -7,6 +7,14 @@ var connectionOnline = mysql.createConnection({
     database: 'tristancarlosapi'
 });
 
+exports.exchange = function (req, res, next) {
+    var idExchange = req.params.idExchange
+    connectionOnline.query("SELECT * FROM exchange WHERE idExchange = '" + idExchange + "'", function (err, result, fields) {
+        if (err) { throw err; }
+        else { res.json(result); }
+    });
+}
+
 exports.listExchange = function (req, res, next) {
     var idUser = req.params.id
     connectionOnline.query("SELECT * FROM exchange WHERE idUser = '" + idUser + "' OR idOtherUser = '" + idUser + "'", function (err, result, fields) {

@@ -62,6 +62,9 @@ module.exports = function (app) {
 
     /* Routes exchange */
 
+    //Get one exchange
+    app.route('/api/exchange/:idExchange').get(exchangeController.exchange);
+
     //Get every exchange
     app.route('/api/exchanges/:id').get(exchangeController.listExchange);
 
