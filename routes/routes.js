@@ -71,5 +71,5 @@ module.exports = function (app) {
     app.route('/api/updateExchange').put(exchangeController.updateExchange);
 
     //Delete an exchange
-    app.route('/api/deleteExchange').delete(exchangeController.deleteExchange);
+    app.route('/api/deleteExchange/:idExchange').delete(exchangeController.deleteExchange);
 };
