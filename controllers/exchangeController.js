@@ -11,7 +11,7 @@ exports.exchange = function (req, res, next) {
     var idExchange = req.params.idExchange
     connectionOnline.query("SELECT * FROM exchange WHERE idExchange =" + idExchange + " LIMIT 1 ", function (err, result, fields) {
         if (err) { throw err; }
-        else { res.json(result); }
+        else { res.json(result[0]); }
     });
 }
 
