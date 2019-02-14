@@ -23,7 +23,7 @@ exports.listConversation = function (req, res, next) {
     var idUser = req.params.idUser;
     connectionOnline.query("SELECT * FROM conversation WHERE idUser='" + idUser + "' OR idOtherUser='" + idUser + "'", function (err, result, fields) {
         if (err) { throw err; }
-        else { res.json( { "conversations": result } ); }
+        else { res.json(result); }
     });
 }
 
