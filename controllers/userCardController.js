@@ -25,10 +25,10 @@ exports.getAllUserCardsWithId = function (req, res, next) {
 }
 
 exports.updateUserCard = function (req, res, next) {
-    var user_idUser_old = req.headers;
-    var user_idUser = req.body.idUser;
-    var card_idCard = req.body.idCard;
-    connectionOnline.query("UPDATE usercard SET user_iduser='" + user_idUser + "' WHERE user_iduser='" + user_idUser_old + "' AND card_idcard='" + card_idCard + "'", function (err, result, fields) {
+    var idNewCard = req.body.idNewCard;
+    var idOldCard = req.body.idOldCard;
+    var idUser = req.body.idUser;
+    connectionOnline.query("UPDATE usercard SET card_idcard='" + idNewCard + "' WHERE user_iduser='" + idUser + "' AND card_idcard='" + idOldCard + "'", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "Le possesseur a été mis à jour." }); }
     });
