@@ -23,7 +23,16 @@ exports.listConversation = function (req, res, next) {
     var idUser = req.params.idUser;
     connectionOnline.query("SELECT * FROM conversation WHERE idUser='" + idUser + "' OR idOtherUser='" + idUser + "'", function (err, result, fields) {
         if (err) { throw err; }
-        else { res.json(result); }
+        else { res.json( { "conversations": result } ); }
+    });
+}
+
+exports.newConversation = function (req, res, next) {
+    var idUser = req.body.idUser;
+    var idOtherUser = req.body.idOtherUser;
+    connectionOnline.query("INSERT INTO conversation (idUser, idOtherUser) VALUES ('" + idUser + "', '" + idOtherUser + "')", function (err, result, fields) {
+        if (err) { throw err; }
+        else { res.json( { "conversation": result } ); }
     });
 }
 

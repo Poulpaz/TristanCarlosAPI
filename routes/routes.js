@@ -89,4 +89,6 @@ module.exports = function (app) {
     //Get every messages
     app.route('/api/messenger/getAllMessages').get(conversationController.listMessage);
 
+    //Create a new conversation
+    app.route('/api/messenger/newConversation').post(conversationController.newConversation);
 };
