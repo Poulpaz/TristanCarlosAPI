@@ -57,6 +57,8 @@ exports.fullExchange = function (req, res, next) {
     var card_idCard = req.body.idCard;
     var user_idOtherUser = req.body.idOtherUser;
     var card_idOtherCard = req.body.idOtherCard;
+
+    var svr = http.createServer(function (req, resp) {
         async.parallel({
             one: function (callback) {
                 console.log("First request...");
@@ -85,6 +87,13 @@ exports.fullExchange = function (req, res, next) {
                     if (!err && res.statusCode == 200) { callback(null, body); }
                     else { callback(true, {}); }
                 });
+            },
+            function(err, results) {
+                // results is now equals to: {one: 1, two: 2}
+                resp.writeHead(200, { "Content-Type": "application/json" });
+                console.log(results);
+                resp.end(JSON.stringify(results));
             }
         });
+    });
 }
