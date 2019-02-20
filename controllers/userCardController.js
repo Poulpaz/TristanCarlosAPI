@@ -85,9 +85,6 @@ exports.fullExchange = function (req, res, next) {
                 if (!err && res.statusCode == 200) { callback(null, body); }
                 else { callback(true, {}); }
             });
-        },
-        function(err, results) {
-            console.log(results);
         }
     });
 }
