@@ -91,7 +91,4 @@ module.exports = function (app) {
 
     //Create a new conversation
     app.route('/api/messenger/newConversation').post(conversationController.newConversation);
-
-    //Update multiple exchange - Debug test
-    app.route('/api/fullExchange').post(userCardController.fullExchange);
 };
