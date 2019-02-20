@@ -32,7 +32,7 @@ exports.newConversation = function (req, res, next) {
     var idOtherUser = req.body.idOtherUser;
     connectionOnline.query("INSERT INTO conversation (idUser, idOtherUser) VALUES ('" + idUser + "', '" + idOtherUser + "')", function (err, result, fields) {
         if (err) { throw err; }
-        else { res.json( { "conversation": result } ); }
+        else { res.json( { "message": "Conversation ajoutée avec succès." } ); }
     });
 }
 
