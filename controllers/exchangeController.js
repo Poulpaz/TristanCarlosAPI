@@ -30,7 +30,7 @@ exports.addNewExchange = function (req, res, next) {
     var cardOtherUser = req.body.cardOtherUser;
     var validUser = req.body.validUser;
     var validOtherUser = req.body.validOtherUser;
-    connectionOnline.query("INSERT INTO exchange (idUser, idOtherUser, cardUser, cardOtherUser, validUser, validOtherUser) VALUES ('" + idUser + "', '" + idOtherUser + "', '" + cardUser + "', '" + cardOtherUser + "', '" + validUser + "', '" + validOtherUser + "')", function (err, result, fields) {
+    connectionOnline.query("INSERT INTO exchange (idUser, idOtherUser, cardUser, cardOtherUser, validUser, validOtherUser) VALUES (?,?,?,?,?,?)", [idUser, idOtherUser, cardUser, cardOtherUser, validUser, validOtherUser], function (err, result, fields) {
         if (err) { throw err; }
         else { res.json({ message: "L'échange à bien été initialisé." }); }
     });
