@@ -36,6 +36,14 @@ exports.newConversation = function (req, res, next) {
     });
 }
 
+exports.deleteConversation = function (req, res, next) {
+    var idConversation = req.params.idConversation;
+    connectionOnline.query("DELETE FROM conversation WHERE idConversation='" + idConversation + "'", function (err, result, fields) {
+        if (err) { throw err; }
+        else { res.json( { "message": "Conversation ajoutée avec succès." } ); }
+    });
+}
+
 
 /* Region messages */
 

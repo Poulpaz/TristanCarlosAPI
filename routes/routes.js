@@ -91,4 +91,7 @@ module.exports = function (app) {
 
     //Create a new conversation
     app.route('/api/messenger/newConversation').post(conversationController.newConversation);
+
+    //Delete a conversation
+    app.route('/api/messenger/deleteConversation/:idConversation').delete(conversationController.deleteConversation);
 };
