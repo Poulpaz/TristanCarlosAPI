@@ -57,43 +57,37 @@ exports.fullExchange = function (req, res, next) {
     var card_idCard = req.body.idCard;
     var user_idOtherUser = req.body.idOtherUser;
     var card_idOtherCard = req.body.idOtherCard;
-
-    var svr = http.createServer(function (req, resp) {
-        async.parallel({
-            one: function (callback) {
-                console.log("First request...");
-                connectionOnline.query("DELETE FROM usercard WHERE user_iduser='" + user_idUser + "' AND card_idcard='" + card_idCard + "'", function (err, res, body) {
-                    if (!err && res.statusCode == 200) { callback(null, body); }
-                    else { callback(true, {}); }
-                });
-            },
-            two: function (callback) {
-                console.log("Second request...");
-                connectionOnline.query("DELETE FROM usercard WHERE user_iduser='" + user_idOtherUser + "' AND card_idcard='" + card_idOtherCard + "'", function (err, res, body) {
-                    if (!err && res.statusCode == 200) { callback(null, body); }
-                    else { callback(true, {}); }
-                });
-            },
-            three: function (callback) {
-                console.log("Third request...");
-                connectionOnline.query("INSERT INTO usercard (user_iduser, card_idcard) VALUES ('" + user_idUser + "', '" + card_idCard + "')", function (err, res, body) {
-                    if (!err && res.statusCode == 200) { callback(null, body); }
-                    else { callback(true, {}); }
-                });
-            },
-            four: function (callback) {
-                console.log("Fourth request...");
-                connectionOnline.query("INSERT INTO usercard (user_iduser, card_idcard) VALUES ('" + user_idOtherUser + "', '" + card_idOtherCard + "')", function (err, res, body) {
-                    if (!err && res.statusCode == 200) { callback(null, body); }
-                    else { callback(true, {}); }
-                });
-            },
-            function(err, results) {
-                // results is now equals to: {one: 1, two: 2}
-                resp.writeHead(200, { "Content-Type": "application/json" });
-                console.log(results);
-                resp.end(JSON.stringify(results));
-            }
-        });
+    async.parallel({
+        one: function (callback) {
+            console.log("First request...");
+            connectionOnline.query("DELETE FROM usercard WHERE user_iduser='" + user_idUser + "' AND card_idcard='" + card_idCard + "'", function (err, res, body) {
+                if (!err && res.statusCode == 200) { callback(null, body); }
+                else { callback(true, {}); }
+            });
+        },
+        two: function (callback) {
+            console.log("Second request...");
+            connectionOnline.query("DELETE FROM usercard WHERE user_iduser='" + user_idOtherUser + "' AND card_idcard='" + card_idOtherCard + "'", function (err, res, body) {
+                if (!err && res.statusCode == 200) { callback(null, body); }
+                else { callback(true, {}); }
+            });
+        },
+        three: function (callback) {
+            console.log("Third request...");
+            connectionOnline.query("INSERT INTO usercard (user_iduser, card_idcard) VALUES ('" + user_idUser + "', '" + card_idCard + "')", function (err, res, body) {
+                if (!err && res.statusCode == 200) { callback(null, body); }
+                else { callback(true, {}); }
+            });
+        },
+        four: function (callback) {
+            console.log("Fourth request...");
+            connectionOnline.query("INSERT INTO usercard (user_iduser, card_idcard) VALUES ('" + user_idOtherUser + "', '" + card_idOtherCard + "')", function (err, res, body) {
+                if (!err && res.statusCode == 200) { callback(null, body); }
+                else { callback(true, {}); }
+            });
+        },
+        function(err, results) {
+            console.log(results);
+        }
     });
 }
