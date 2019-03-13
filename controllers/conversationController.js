@@ -1,11 +1,5 @@
-var mysql = require('mysql');
-var connectionOnline = mysql.createConnection({
-    // properties
-    host: 'db4free.net',
-    user: 'tristancarlos',
-    password: 'Jo33b42y&',
-    database: 'tristancarlosapi'
-});
+var connection = require('../connection/connection');
+var connectionOnline = connection.connectionOnline;
 
 /* Region conversation - message */
 
@@ -14,6 +8,25 @@ exports.listMessageIntoConversation = function (req, res, next) {
     connectionOnline.query("SELECT idMessage, idUserMessage, messageContent, sendDate FROM message, conversation WHERE message.conversation_idConversation = conversation.idConversation AND conversation.idConversation='" + idConversation + "'", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json(result); }
+    });
+}
+
+exports.newMessage = function (req, res, next) {
+    var conversation_idConversation = req.body.idConversation;
+    var idUserMessage = req.body.idUserMessage;
+    var messageContent = req.body.messageContent;
+    var sendDate = req.body.sendDate;
+    connectionOnline.query("INSERT INTO message (conversation_idConversation, idUserMessage, messageContent, sendDate) VALUES ('" + conversation_idConversation + "', '" + idUserMessage + "', '" + messageContent + "', '" + sendDate + "')", function (err, result, fields) {
+        if (err) { throw err; }
+        else { res.json( { "message": "Message transmis avec succès." } ); }
+    });
+}
+
+exports.deleteMessage = function (req, res, next) {
+    var idMessage = req.params.idMessage;
+    connectionOnline.query("DELETE FROM message WHERE idMessage='" + idMessage + "'", function (err, result, fields) {
+        if (err) { throw err; }
+        else { res.json( { "message": "Message supprimé avec succès." } ); }
     });
 }
 

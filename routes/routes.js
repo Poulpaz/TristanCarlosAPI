@@ -83,6 +83,12 @@ module.exports = function (app) {
     //Get every messages into a conversation
     app.route('/api/messenger/messages/:idConversation').get(conversationController.listMessageIntoConversation);
 
+    //Create a new message
+    app.route('/api/messenger/messages/newMessage').post(conversationController.newMessage);
+
+    //Delete a message
+    app.route('/api/messenger/messages/deleteMessage/:idMessage').delete(conversationController.deleteMessage);
+
     //Get every conversations for an user
     app.route('/api/messenger/conversation/:idUser').get(conversationController.listConversation);
 

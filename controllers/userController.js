@@ -1,11 +1,5 @@
-var mysql = require('mysql');
-var connectionOnline = mysql.createConnection({
-    // properties
-    host: 'db4free.net',
-    user: 'tristancarlos',
-    password: 'Jo33b42y&',
-    database: 'tristancarlosapi'
-});
+var connection = require('../connection/connection');
+var connectionOnline = connection.connectionOnline;
 
 exports.listUser = function (req, res, next) {
     connectionOnline.query("SELECT * FROM user", function (err, result, fields) {

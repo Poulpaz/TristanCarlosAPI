@@ -1,11 +1,5 @@
-var mysql = require('mysql');
-var connectionOnline = mysql.createConnection({
-    // properties
-    host: 'db4free.net',
-    user: 'tristancarlos',
-    password: 'Jo33b42y&',
-    database: 'tristancarlosapi'
-});
+var connection = require('../connection/connection');
+var connectionOnline = connection.connectionOnline;
 
 exports.exchange = function (req, res, next) {
     var idExchange = req.params.idExchange

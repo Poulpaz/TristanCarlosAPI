@@ -1,13 +1,5 @@
-var mysql = require('mysql');
-var https = require('https');
-var async = require('async');
-var connectionOnline = mysql.createConnection({
-    // properties
-    host: 'db4free.net',
-    user: 'tristancarlos',
-    password: 'Jo33b42y&',
-    database: 'tristancarlosapi'
-});
+var connection = require('../connection/connection');
+var connectionOnline = connection.connectionOnline;
 
 exports.listUserCard = function (req, res, next) {
     connectionOnline.query("SELECT * FROM usercard, user WHERE usercard.user_iduser=user.idUser", function (err, result, fields) {
