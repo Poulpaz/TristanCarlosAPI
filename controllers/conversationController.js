@@ -11,9 +11,9 @@ var connectionOnline = mysql.createConnection({
 
 exports.listMessageIntoConversation = function (req, res, next) {
     idConversation = req.params.idConversation;
-    connectionOnline.query("SELECT idMessage, conversation_idConversation, idUserMessage, messageContent, sendDate FROM message, conversation WHERE message.conversation_idConversation = conversation.idConversation AND conversation.idConversation='" + idConversation + "'", function (err, result, fields) {
+    connectionOnline.query("SELECT idMessage, idUserMessage, messageContent, sendDate FROM message, conversation WHERE message.conversation_idConversation = conversation.idConversation AND conversation.idConversation='" + idConversation + "'", function (err, result, fields) {
         if (err) { throw err; }
-        else { res.json( { "messages": result } ); }
+        else { res.json(result); }
     });
 }
 
@@ -40,7 +40,7 @@ exports.deleteConversation = function (req, res, next) {
     var idConversation = req.params.idConversation;
     connectionOnline.query("DELETE FROM conversation WHERE idConversation='" + idConversation + "'", function (err, result, fields) {
         if (err) { throw err; }
-        else { res.json( { "message": "Conversation ajoutée avec succès." } ); }
+        else { res.json( { "message": "Conversation supprimée avec succès." } ); }
     });
 }
 
