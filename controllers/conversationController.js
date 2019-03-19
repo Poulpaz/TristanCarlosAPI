@@ -71,7 +71,7 @@ exports.listMessage = function (req, res, next) {
     });
 }
 
-//Notifier les utilisateurs de la création d'un événement
+//Notifier l'utilisateur d'un nouveau message
 function notificationMessage(conversation_idConversation, idUserMessage, messageContent) {
     connectionOnline.query("SELECT idConversation, idUser, idOtherUser FROM conversation WHERE idConversation = '" + idConversation + "'", function (err, result, fields) {
         if (err) { throw err; }
