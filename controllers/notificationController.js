@@ -12,7 +12,7 @@ exports.notificationMessage = function (rowIdConversation, rowIdUser, rowIdOther
     
     var topic = null;
 
-    if(rowIdUser == rowIdUserMessage) { var topic = rowIdOtherUser; }
+    if(rowIdUser == String(rowIdUserMessage)) { var topic = String(rowIdOtherUser); }
     else { var topic = rowIdUser; }
   
     var payload = {
