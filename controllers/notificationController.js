@@ -1,9 +1,10 @@
 var admin = require("firebase-admin");
-//var serviceAccount = require("../serviceAccountKey.json");
+
+var serviceAccount = require("../serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://aslyon1-80c44.firebaseio.com"
+  databaseURL: "https://theelderscrolls-3377f.firebaseio.com"
 });
 
 //Notifier les utilisateurs d'un nouvel événement
