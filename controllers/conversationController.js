@@ -2,7 +2,7 @@ var connection = require('../connection/connection');
 var connectionOnline = connection.connectionOnline;
 
 //Instancier le contrôleur de notifications
-var notificationController = require('./controller/notificationController');
+var notificationController = require('../controllers/notificationController');
 
 /* Region conversation - message */
 
