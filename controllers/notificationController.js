@@ -39,11 +39,12 @@ exports.notificationMessage = function (rowIdConversation, rowIdUser, rowIdOther
 //Notifier les utilisateurs d'un nouvel événement
 exports.notificationExchange = function (rowIdExchange, rowIdOtherUser) {
     
-    topic = String(rowIdOtherUser);
+    var topic = String(rowIdOtherUser);
 
     var payload = {
     notification: {
-      title: "Nouvel échange"
+      title: "Nouvel échange",
+      body: "Echange"
     },
     data: {
       idNotif: String(rowIdExchange),

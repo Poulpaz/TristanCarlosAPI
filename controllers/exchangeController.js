@@ -65,7 +65,7 @@ function notificationExchange() {
                 rowIdExchange = result[key].idExchange;
                 rowIdOtherUser = result[key].idOtherUser;
             });
-            notificationController.notificationMessage(rowIdExchange, rowIdOtherUser);
+            notificationController.notificationExchange(rowIdExchange, rowIdOtherUser);
         }
     });
 }
