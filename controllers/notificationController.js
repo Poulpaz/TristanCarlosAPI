@@ -44,7 +44,7 @@ exports.notificationExchange = function (rowIdExchange, rowIdOtherUser) {
     var payload = {
     notification: {
       title: "Nouvel échange",
-      body: String(rowIdOtherUser)
+      body: "Echange"
     },
     data: {
       idNotif: String(rowIdExchange),
