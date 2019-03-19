@@ -1,5 +1,5 @@
 var admin = require("firebase-admin");
-
+var topic = "theelderscrolls"
 var serviceAccount = require("../serviceAccountKey.json");
 
 admin.initializeApp({
@@ -10,11 +10,10 @@ admin.initializeApp({
 //Notifier les utilisateurs d'un nouvel événement
 exports.notificationMessage = function (rowIdConversation, rowIdUser, rowIdOtherUser, rowIdUserMessage, rowMessageContent) {
     
-    var topic = null;
-
+/*
     if(rowIdUser == String(rowIdUserMessage)) { var topic = String(rowIdOtherUser); }
     else { var topic = rowIdUser; }
-  
+  */
     var payload = {
     notification: {
       title: "Nouveau message",
