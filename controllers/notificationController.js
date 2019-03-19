@@ -10,10 +10,9 @@ admin.initializeApp({
 //Notifier les utilisateurs d'un nouvel événement
 exports.notificationMessage = function (rowIdConversation, rowIdUser, rowIdOtherUser, rowIdUserMessage, rowMessageContent) {
     
-/*
     if(rowIdUser == String(rowIdUserMessage)) { var topic = String(rowIdOtherUser); }
     else { var topic = rowIdUser; }
-  */
+  
     var payload = {
     notification: {
       title: "Nouveau message",
