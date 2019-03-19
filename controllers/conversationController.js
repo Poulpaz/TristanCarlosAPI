@@ -1,6 +1,9 @@
 var connection = require('../connection/connection');
 var connectionOnline = connection.connectionOnline;
 
+//Instancier le contrôleur de notifications
+var notificationController = require('../controller/notificationController');
+
 /* Region conversation - message */
 
 exports.listMessageIntoConversation = function (req, res, next) {
@@ -20,6 +23,7 @@ exports.newMessage = function (req, res, next) {
         if (err) { throw err; }
         else { res.json( { "message": "Message transmis avec succès." } ); }
     });
+    notificationMessage(conversation_idConversation, idUserMessage, messageContent);
 }
 
 exports.deleteMessage = function (req, res, next) {
@@ -64,5 +68,22 @@ exports.listMessage = function (req, res, next) {
     connectionOnline.query("SELECT * FROM message", function (err, result, fields) {
         if (err) { throw err; }
         else { res.json( { "messages": result } ); }
+    });
+}
+
+//Notifier les utilisateurs de la création d'un événement
+function notificationMessage(conversation_idConversation, idUserMessage, messageContent) {
+    connectionOnline.query("SELECT idConversation, idUser, idOtherUser FROM conversation WHERE idConversation = '" + idConversation + "'", function (err, result, fields) {
+        if (err) { throw err; }
+        else {
+            Object.keys(result).forEach(function (key) {
+                rowIdConversation = conversation_idConversation;
+                rowIdUser = result[key].idUser;
+                rowIdOtherUser = result[key].idOtherUser;
+                rowIdUserMessage = idUserMessage;
+                rowMessageContent = messageContent;
+            });
+            notificationController.notificationMessage(rowIdConversation, rowIdUser, rowIdOtherUser, rowIdUserMessage, rowMessageContent);
+        }
     });
 }
