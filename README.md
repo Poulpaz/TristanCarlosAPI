@@ -1,7 +1,10 @@
 # TristanCarlosAPI
 ## Technologies et utilisation de l'application
-Se référer au dossier Android sur le lien suivant : https://docs.google.com/document/d/1ymVyoLiDl6DWE7ieThli_N3bpy5y2l_rfXnvzpe1xxg/edit?usp=sharing
+Dossier fonctionnel :
+https://docs.google.com/document/d/1qGLZiWnS14I7dJQUrJ84qgTeJ7D9Cf6odAvEB1gW-bg/edit?usp=sharing
 
+Dossier Technique :
+https://docs.google.com/document/d/1ymVyoLiDl6DWE7ieThli_N3bpy5y2l_rfXnvzpe1xxg/edit?usp=sharing
 
 ## Accès aux ressources JSON (routes)
 
